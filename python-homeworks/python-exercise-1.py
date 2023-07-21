@@ -66,11 +66,11 @@ def fn(*args):
 # Args is the conventional name we use in the industry
 
 
-def dev_skills(dev_name, *args):
-    dev = {"name": dev_name, "skills": list()}
-    # for skill in args:
-    #     dev["skills"].append(skill)
-    return dev
+# def dev_skills(dev_name, *args):
+#     dev = {"name": dev_name, "skills": list()}
+#     # for skill in args:
+#     #     dev["skills"].append(skill)
+#     return dev
 
 
 # print(dev_skills("Alex", "HTML", "CSS", "Python", "Javascript"))
@@ -80,8 +80,38 @@ def dev_skills(dev_name, *args):
 # naming arguments, naming key arguments
 
 
+# //conventional
 def divide(a, b):
     return f"{a} divided by {b} is {a / b}"
 
 
-print(divide(100, 25))
+# print(divide(100, 25))
+
+
+# //non-conventional
+def divide(a, b):
+    return f"{a} divided by {b} is {a / b}"
+
+
+# print(divide(b=100, a=25))
+
+
+def dev_skills(dev_name, **kwargs):
+    dev = {"name": dev_name, "skills": kwargs}
+    return dev
+
+
+# print(dev_skills("Jackie", HTML=5, CSS=3, Javascript=4, Python=2))
+
+
+def arg_demo(post1, post2, *args, **kwargs):
+    print(f"Positional params: {post1}, {post2}")
+    print("*args")
+    for arg in args:
+        print(" ", arg)
+    print("**kwargs:")
+    for keyword, value in kwargs.items():
+        print(f" {keyword}: {value}")
+
+
+arg_demo("A", "B", 1, 2, 3, color="purple", shape="circle")
